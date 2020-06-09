@@ -12,12 +12,22 @@ class BooksController < ApplicationController
     #DBへの保存
     book.save
     #詳細ページへのリダイレクト
-    redirect_to '/books'
+    redirect_to '/'
   end
 
   def show
-    #Bookモデルを通してDBから、idをもとにデータを引っ張ってインスタンス変数へと入れる
+    #DBから、IDをもとにデータを引っ張ってインスタンス変数へと入れる
     @book = Book.find(params[:id])
+  end
+
+  def edit
+    @book = Book.find(params[:id])
+  end
+
+  def update
+    book = Book.find(params[:id])
+    book.update(list_params)
+    redirect_to show_books_path(book.id)
   end
 
   private
