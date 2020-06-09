@@ -1,1 +1,31 @@
-<h1>一覧表示ページ</h1>
+<h1>Books</h1>
+
+<table>
+<tr>
+<th>Title</th>
+<th>Body</th>
+</tr>
+
+<tr>
+<td>タイトル</td>
+<td>小説もの</td>
+<td>Show</td>
+<td>Edit</td>
+<td>Destroy</td>
+</tr>
+
+</table>
+
+<h1>新規投稿</h1>
+
+<%= form_for(@book, url: '/bookcreate') do |f| %>
+
+<h4>title</h4>
+<%= f.text_field :title %>
+
+<h4>body</h4>
+<%= f.text_area :body %>
+
+<%= f.submit 'Create Book' %>
+
+<% end %>
