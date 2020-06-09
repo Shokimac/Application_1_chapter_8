@@ -3,21 +3,21 @@ class BooksController < ApplicationController
     #一覧表示の為にDBから全てのデータを引っ張ってくる
     @books = Book.all
 
-    #Viewへ渡すための空のモデルオブジェクトを精製してインスタンス変数へ入れる
     @book = Book.new
   end
 
   def create
     #ストロングパラメータを使用してデータを受け取る
-    book = Book.new(params[:id])
+    book = Book.new(list_params)
     #DBへの保存
     book.save
     #詳細ページへのリダイレクト
-    redirect_to top_path
+    redirect_to '/books'
   end
 
   def show
-
+    #Bookモデルを通してDBから、idをもとにデータを引っ張ってインスタンス変数へと入れる
+    @book = Book.find(params[:id])
   end
 
   private
