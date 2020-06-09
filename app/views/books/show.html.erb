@@ -3,3 +3,7 @@
 <span> <%= @book.title %> <br> </span>
 <span>Body:</span>
 <span><%= @book.body %></span>
+
+<%= link_to 'Edit', "/books/#{@book.id}/edit" %>
+<span>|</span>
+<%= link_to 'Back', "/books" %>
