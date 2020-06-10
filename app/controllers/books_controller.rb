@@ -8,11 +8,15 @@ class BooksController < ApplicationController
 
   def create
     #ストロングパラメータを使用してデータを受け取る
-    book = Book.new(list_params)
-    #DBへの保存
-    book.save
-    #詳細ページへのリダイレクト
-    redirect_to book_path(book.id)
+    @book = Book.new(list_params)
+
+    if @book.save
+      #詳細ページへのリダイレクト
+    redirect_to book_path(@book.id)
+    else
+      @books = Book.all
+      render :index
+    end
   end
 
   def show
