@@ -1,8 +1,17 @@
 
-<span>Title:</span>
-<span> <%= @book.title %> <br> </span>
-<span>Body:</span>
-<span><%= @book.body %></span>
+<p id="notice">
+<%=  notice %> <!--サクセスメッセージの表示-->
+</p>
+
+
+<p>
+<strong>Title:</strong>
+<%= @book.title %>
+</p>
+<p>
+<strong>Body:</strong>
+<%= @book.body %>
+</p>
 
 <%= link_to 'Edit', "/books/#{@book.id}/edit" %>
 <span>|</span>
