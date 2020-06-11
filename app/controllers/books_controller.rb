@@ -2,7 +2,6 @@ class BooksController < ApplicationController
   def index
     #一覧表示の為にDBから全てのデータを引っ張ってくる
     @books = Book.all
-
     @book = Book.new
   end
 
@@ -28,10 +27,13 @@ class BooksController < ApplicationController
   end
 
   def update
-    book = Book.find(params[:id])
-    book.update(list_params)
-    redirect_to book_path(book.id), notice:'Book was successfully updated.'
+    @book = Book.find(params[:id])
+    if @book.update(list_params)
+    redirect_to book_path(@book.id), notice:'Book was successfully updated.'
+    else
+      render :edit
   end
+end
 
   def destroy
     book = Book.find(params[:id])
