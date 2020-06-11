@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get 'books/:id' => 'books#show', as: 'book'
 
-  post 'bookcreate' => 'books#create'
+  post 'books' => 'books#create'
 
   get 'books/:id/edit' => 'books#edit', as: 'edit_book'
 
